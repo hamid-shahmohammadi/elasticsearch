@@ -65,3 +65,34 @@ DELETE /vehicles/car/123
 GET /vehicles
 DELETE /vehicles
 ```
+# Components of an Index and Searching
+```
+PUT /business/bulding/990
+{
+  "address":"tehran saadat abad"
+}
+GET /business
+PUT /contracts/_doc/9987
+{
+  "name":"property renovation",
+  "data_signed":"July 26, 2010",
+  "employees_involved":[331,330,398]
+}
+GET /business/bulding/_search
+GET /business/_search
+GET /business/_search
+{
+  "query":{
+    "term": {
+      "address": "saadat"
+    }
+  }
+}
+GET /business/_search
+{
+  "query":{
+    "match_all": {}
+  }
+}
+curl -XGET "http://localhost:9200/business/_search?pretty" -H 'Content-Type: application/json' -d'{  "query":{    "match_all": {}  }}'
+```
