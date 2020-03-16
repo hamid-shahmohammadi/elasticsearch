@@ -96,3 +96,49 @@ GET /business/_search
 }
 curl -XGET "http://localhost:9200/business/_search?pretty" -H 'Content-Type: application/json' -d'{  "query":{    "match_all": {}  }}'
 ```
+
+# 1. Lecture 8 Index Settings and Mappings (Part 1)
+```
+PUT /customers
+{
+  "settings": {
+    "number_of_shards": 2,
+    "number_of_replicas": 1
+  },
+  "mappings": {}
+}
+GET customers
+
+DELETE customers
+
+PUT /customers
+{
+  "mappings": {
+    
+      "properties":{
+        "gender":{
+          "type":"text",
+          "analyzer":"standard"
+        },
+        "age":{
+          "type":"integer"
+        },
+        "total_spent":{
+          "type":"float"
+        },
+        "is_new":{
+          "type":"boolean"
+        },
+        "name":{
+          "type":"text",
+          "analyzer":"standard"
+        }
+      }
+    
+  },
+  "settings": {
+    "number_of_shards": 2,
+    "number_of_replicas": 1
+  }
+}
+```
