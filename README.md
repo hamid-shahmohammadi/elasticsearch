@@ -142,3 +142,36 @@ PUT /customers
   }
 }
 ```
+# 2. Lecture 9 Index Settings and Mappings (Part 2)
+```
+PUT /customers/_doc/124
+{
+  "name":"hamid shah",
+  "address":"tehran",
+  "gender":"female",
+  "age":34,
+  "total_spent":550.76,
+  "is_new":false
+}
+GET /customers/_doc/124
+POST _analyze
+{
+  "analyzer": "standard",
+  "text": "Yes yes122, Gödel said this sentence is consistent and."
+}
+POST _analyze
+{
+  "analyzer": "simple",
+  "text": "Yes123 yes, Gödel987 said:; this sentence is consistent and."
+}
+POST _analyze
+{
+  "analyzer": "whitespace",
+  "text": "Yes123 yes, Gödel987 said:; this sentence is consistent and."
+}
+POST _analyze
+{
+  "analyzer": "english",
+  "text": "running Yes123 yes, the Gödel987 said:; this sentences is consistent and."
+}
+```
