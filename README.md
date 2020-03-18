@@ -191,23 +191,32 @@ PUT /courses/_doc/11
 GET courses/_search
 {
   "query": {
-    "match": {
-      "name": "gitar"
-    }
-  }
-}
-GET courses/_search
-{
-  "query": {
     "match_all": {}
   }
 }
+```
+### query search for exist field
+```
 GET courses/_search
 {
   "query": {
     "exists": {"field": "professor.email"}
   }
 }
+```
+### query search for one field
+```
+GET courses/_search
+{
+  "query": {
+    "match": {
+      "name": "gitar"
+    }
+  }
+}
+```
+### query search for multiple field
+```
 GET courses/_search
 {
   "query": {
