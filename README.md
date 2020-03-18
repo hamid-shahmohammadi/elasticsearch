@@ -175,3 +175,50 @@ POST _analyze
   "text": "running Yes123 yes, the Gödel987 said:; this sentences is consistent and."
 }
 ```
+# 2. Lecture 10 Search DSL Query Context
+```
+PUT /courses/_doc/11
+{
+  "name":"folot",
+  "room":"t58",
+  "professor":{
+    "name":"sisi nori",
+    "department":"art",
+    "facutly_type":"part_time",
+    "email":""
+  }
+}
+GET courses/_search
+{
+  "query": {
+    "match": {
+      "name": "gitar"
+    }
+  }
+}
+GET courses/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+GET courses/_search
+{
+  "query": {
+    "exists": {"field": "professor.email"}
+  }
+}
+GET courses/_search
+{
+  "query": {
+    "bool": {
+      "must":[
+      {"match": {"name": "gitar"}},
+      {"match": {"room": "t28"}}
+    ] 
+    }
+    
+    
+  }
+}
+```
