@@ -213,12 +213,10 @@ GET courses/_search
   "query": {
     "bool": {
       "must":[
-      {"match": {"name": "gitar"}},
-      {"match": {"room": "t28"}}
-    ] 
-    }
-    
-    
+        {"match": {"name": "gitar"}},
+        {"match": {"room": "t28"}}
+      ] 
+    }  
   }
 }
 ```
