@@ -229,3 +229,49 @@ GET courses/_search
   }
 }
 ```
+
+### query search for multiple field except field
+```
+GET courses/_search
+{
+  "query": {
+    "bool": {
+      "must":[
+      {"match": {"name": "gitar"}}
+    ] ,
+      "must_not": [
+        {"match": {
+          "room": "t38"
+        }}
+      ]
+    }
+    
+    
+  }
+}
+```
+
+### query should
+```
+GET courses/_search
+{
+  "query": {
+    "bool": {
+      "must":[
+      {"match": {"name": "gitar"}}
+    ] ,
+      "must_not": [
+        {"match": {
+          "room": "t38"
+        }}
+      ],
+      "should": [
+        {"match": {
+          "room": "t18"
+        }}
+      ],
+      "minimum_should_match": 1
+    }
+  }
+}
+```
