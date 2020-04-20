@@ -275,3 +275,49 @@ GET courses/_search
   }
 }
 ```
+
+# 3-11
+```
+GET courses/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "art",
+      "fields": ["name","professor.department"]
+    }
+  }
+}
+
+GET courses/_search
+{
+  "query": {
+    "match_phrase": {
+      "name":"piano gitar"
+    }
+  }
+}
+
+GET courses/_search
+{
+  "query": {
+    "match_phrase_prefix": {
+      "name":"piano gi"
+    }
+  }
+}
+```
+## date(2015-01-19) & num
+```
+GET courses/_search
+{
+  "query": {
+    "range": {
+      "num":{
+        "gte": 1,
+        "lte": 10
+      }
+    }
+  }
+}
+```
+## jsonlint.com
